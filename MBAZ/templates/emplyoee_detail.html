@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Detail: {{ employee.first_name }} {{ employee.sec_name }}</title>
+</head>
+<body>
+    <h1>Employee Detail: {{ employee.first_name }} {{ employee.sec_name }}</h1>
+    <p>First Name: {{ employee.first_name }}</p>
+    <p>Second Name: {{ employee.sec_name }}</p>
+    <p>PESEL: {{ employee.pesel }}</p>
+    <p>Phone Number: {{ employee.phone_number }}</p>
+    <p>Laboratory: {{ employee.Laboratory.name }}</p>
+    <h2>Projects:</h2>
+    <ul>
+        {% for project in employee.Projects.all %}
+            <li>{{ project.name_of_the_project }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Experiments:</h2>
+    <ul>
+        {% for experiment in employee.experiment_set.all %}
+            <li>{{ experiment.Name_of_experiment }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

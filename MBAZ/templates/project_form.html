@@ -1,0 +1,15 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Project</title>
+</head>
+<body>
+    <h1>Add New Project</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'project_list' %}">Back to Project List</a>
+</body>
+</html>

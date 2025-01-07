@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Detail: {{ project.name_of_the_project }}</title>
+</head>
+<body>
+    <h1>Project Detail: {{ project.name_of_the_project }}</h1>
+    <p>Description: {{ project.description }}</p>
+    <p>Start Date: {{ project.start_date }}</p>
+    <p>End Date: {{ project.end_date }}</p>
+
+    <h2>Employees:</h2>
+    <form method="post">
+        {% csrf_token %}
+        <ul>
+            {% for employee in employees %}
+                <li>
+                    {{ employee.first_name }} {{ employee.sec_name }}
+                    <input type="checkbox" name="employee_ids" value="{{ employee.pk }}"> Usuń
+                </li>
+            {% empty %}
+                <li>No employees assigned to this project.</li>
+            {% endfor %}
+        </ul>
+        <button type="submit" name="delete_employee">Delete Selected Employees</button>
+    </form>
+
+    <h2>Add Employees:</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" name="add_employee">Add Selected Employees</button>
+    </form>
+
+    <h2>Patients:</h2>
+    <ul>
+        {% for patient in patients %}
+            <li><a href="{% url 'patient_results' patient.id %}">{{ patient.name }} {{ patient.surname }}</a></li>
+        {% empty %}
+            <li>No patients assigned to this project.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Experiments:</h2>
+    <ul>
+        {% for experiment in experiments %}
+            <li><a href="{% url 'experiment_detail' experiment.id %}">{{ experiment.Name_of_experiment }}</a></li>
+        {% empty %}
+            <li>No experiments for this project.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

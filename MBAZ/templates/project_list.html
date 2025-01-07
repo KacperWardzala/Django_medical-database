@@ -1,0 +1,17 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project List</title>
+</head>
+<body>
+    <h1>Project List</h1>
+    <ul>
+        {% for project in projects %}
+            <li>
+                <a href="{% url 'project_detail' project.id %}">{{ project.name_of_the_project }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'project_create' %}">Add New Project</a>
+</body>
+</html>

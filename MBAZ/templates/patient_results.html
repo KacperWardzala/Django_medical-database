@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results for {{ patient.name }} {{ patient.surname }}</title>
+</head>
+<body>
+    <h1>Results for {{ patient.name }} {{ patient.surname }}</h1>
+    <ul>
+    {% for result in results %}
+        <li>{{ result.filename }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

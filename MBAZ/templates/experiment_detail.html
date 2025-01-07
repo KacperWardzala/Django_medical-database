@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Experiment Detail: {{ experiment.Name_of_experiment }}</title>
+</head>
+<body>
+    <h1>Experiment Detail: {{ experiment.Name_of_experiment }}</h1>
+    <p>Start Date: {{ experiment.Start_date }}</p>
+    <p>End Date: {{ experiment.End_date }}</p>
+    <p>Status: {{ experiment.Status }}</p>
+    <p>Description of Results: {{ experiment.Description_of_results }}</p>
+
+    <h2>Results:</h2>
+    <ul>
+        {% for result in results %}
+            <li>{{ result.filename }}</li>
+        {% empty %}
+            <li>No results available for this experiment.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
